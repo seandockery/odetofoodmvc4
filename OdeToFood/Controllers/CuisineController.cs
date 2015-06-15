@@ -11,7 +11,7 @@ namespace OdeToFood.Controllers
         //
         // GET: /Cuisine/
 
-        public ActionResult Search(string name)
+        public ActionResult Search(string name = "french")
         {
             var message = Server.HtmlEncode(name);
 
