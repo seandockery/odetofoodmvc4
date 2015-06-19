@@ -14,8 +14,7 @@ namespace OdeToFood.Controllers
         public ActionResult Search(string name = "french")
         {
             var message = Server.HtmlEncode(name);
-
-            return Content(message);
+            return RedirectToAction("Index", "Home", new { name = name });
         }
 
     }
