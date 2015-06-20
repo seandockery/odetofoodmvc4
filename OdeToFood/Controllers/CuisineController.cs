@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace OdeToFood.Controllers
 {
+    [Authorize]
     public class CuisineController : Controller
     {
         //
         // GET: /Cuisine/
 
-        [Authorize]
         public ActionResult Search(string name = "french")
         {
             var message = Server.HtmlEncode(name);
