@@ -29,6 +29,7 @@
             </div>
         </header>
         <div id="body">
+            @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
@@ -36,7 +37,6 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    @RenderSection("featured", required: true)
                     <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
                 </div>
             </div>
