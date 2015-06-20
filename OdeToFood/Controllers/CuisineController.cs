@@ -11,18 +11,11 @@ namespace OdeToFood.Controllers
         //
         // GET: /Cuisine/
 
-        [HttpPost]
+        [Authorize]
         public ActionResult Search(string name = "french")
         {
             var message = Server.HtmlEncode(name);
             return Content(message);
         }
-
-        [HttpGet]
-        public ActionResult Search()
-        {
-            return Content("search");
-        }
-
     }
 }
