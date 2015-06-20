@@ -61,7 +61,9 @@ namespace OdeToFood.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var review = _reviews.Single(r => r.Id == id);
+
+            return View(review);
         }
 
         //
