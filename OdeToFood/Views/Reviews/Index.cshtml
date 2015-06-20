@@ -4,7 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>The Latest Reviews</h2>
+
+<p>@VirtualPath</p>
+
+<p>We are showing the latest @Model.Count() reviews.</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
