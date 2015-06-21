@@ -13,7 +13,10 @@ namespace OdeToFood.Controllers
 
         public ActionResult Index()
         {
-            var model = _db.Restaurants.ToList();
+            var model = 
+                from r in _db.Restaurants 
+                orderby r.Name 
+                select r;
 
             return View(model);
         }
