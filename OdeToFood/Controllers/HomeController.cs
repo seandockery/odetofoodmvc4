@@ -15,7 +15,7 @@ namespace OdeToFood.Controllers
         {
             var model = 
                 from r in _db.Restaurants 
-                orderby r.Reviews.Count() descending
+                orderby r.Reviews.Average(review => review.Rating) descending
                 select r;
 
             return View(model);
