@@ -208,6 +208,7 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantListViewModel.cs" />
     <Compile Include="Models\RestaurantReview.cs" />
+    <Compile Include="Models\ReviewEditReviewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
