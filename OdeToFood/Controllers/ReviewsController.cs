@@ -48,34 +48,20 @@ namespace OdeToFood.Controllers
             var review = _db.Reviews.Find(id);
             if (review != null)
             {
-                var model = new ReviewEditViewModel
-                {
-                    Id = review.Id,
-                    Rating = review.Rating,
-                    Body = review.Body,
-                    RestaurantId = review.RestaurantId
-                };
-                return View(model);
+                return View(review);
             }
             return HttpNotFound();
         }
 
         [HttpPost]
-        public ActionResult Edit(ReviewEditViewModel model)
+        public ActionResult Edit(RestaurantReview review)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(review);
             }
 
-            var review = _db.Reviews.Find(model.Id);
-            if (review == null)
-            {
-                return HttpNotFound();
-            }
-
-            review.Rating = model.Rating;
-            review.Body = model.Body;
+            _db.Entry(review).State = EntityState.Modified;
             _db.SaveChanges();
 
             return RedirectToAction("Index", new { id = review.RestaurantId });
