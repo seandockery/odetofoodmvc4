@@ -1,5 +1,4 @@
-﻿@model IEnumerable<OdeToFood.Models.RestaurantListViewModel>
-
+﻿@model IPagedList<RestaurantListViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -11,4 +10,4 @@
     <input type="submit" value="Search by Name" />
 </form>
 
-@Html.Partial("_Restaurants", Model);
+@Html.Partial("_Restaurants", Model)
