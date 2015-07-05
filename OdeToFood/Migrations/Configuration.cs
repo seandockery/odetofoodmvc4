@@ -48,15 +48,15 @@ namespace OdeToFood.Migrations
             var roles = (SimpleRoleProvider)Roles.Provider;
             var membership = (SimpleMembershipProvider)Membership.Provider;
 
-            if (!roles.RoleExists("Admin"))
+            if (!roles.RoleExists("admin"))
             {
-                roles.CreateRole("Admin");
+                roles.CreateRole("admin");
             }
             if (membership.GetUser("sallen", false) == null)
             {
                 membership.CreateUserAndAccount("sallen", "imalittleteapot");
             }
-            if (!roles.GetRolesForUser("sallen").Contains("Admin"))
+            if (!roles.GetRolesForUser("sallen").Contains("admin"))
             {
                 roles.AddUsersToRoles(new[] { "sallen" }, new[] { "admin" });
             }
