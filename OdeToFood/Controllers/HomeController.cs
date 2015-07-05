@@ -8,7 +8,7 @@ using PagedList;
 
 namespace OdeToFood.Controllers
 {
-    [Authorize(Users="sdockery")]
+    [Authorize(Roles="administrators, sales")]
     public class HomeController : Controller
     {
         OdeToFoodDb _db = new OdeToFoodDb();
