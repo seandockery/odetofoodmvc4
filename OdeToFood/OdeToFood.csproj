@@ -361,6 +361,7 @@
     <EmbeddedResource Include="Migrations\201506210857442_InitialCreate.resx">
       <DependentUpon>201506210857442_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\Resources.fr.resx" />
     <EmbeddedResource Include="Views\Home\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
