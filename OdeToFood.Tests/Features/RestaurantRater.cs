@@ -8,15 +8,14 @@ namespace OdeToFood.Tests.Features
 {
     public class RestaurantRater
     {
-        private Restaurant data;
+        private Restaurant _restaurant;
 
-        public RestaurantRater(Restaurant data)
+        public RestaurantRater(Restaurant restaurant)
         {
-            // TODO: Complete member initialization
-            this.data = data;
+            this._restaurant = restaurant;
         }
 
-        public RatingResult ComputeRating(int p)
+        public RatingResult ComputeRating(int numberOfReviews)
         {
             var result = new RatingResult();
             result.Rating = 4;
