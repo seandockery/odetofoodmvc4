@@ -18,7 +18,7 @@ namespace OdeToFood.Tests.Features
         public RatingResult ComputeRating(int numberOfReviews)
         {
             var result = new RatingResult();
-            result.Rating = 4;
+            result.Rating = (int)_restaurant.Reviews.Average(r => r.Rating);
             return result;
         }
     }
