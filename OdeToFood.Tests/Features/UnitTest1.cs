@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OdeToFood.Models;
+using System.Collections.Generic;
 
 //
 // A restaurant's overall rating can be calculating using various methods.
@@ -23,6 +25,14 @@ namespace OdeToFood.Tests.Features
         [TestMethod]
         public void TestMethod1()
         {
+            var data = new Restaurant();
+            data.Reviews = new List<RestaurantReview>();
+            data.Reviews.Add(new RestaurantReview() { Rating = 4 });
+
+            var rater = new RestaurantRater(data);
+            var result = rater.ComputeRating(10);
+
+            Assert.AreEqual(4, result.Rating);
         }
     }
 }
