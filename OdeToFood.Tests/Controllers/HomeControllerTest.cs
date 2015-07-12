@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OdeToFood;
 using OdeToFood.Controllers;
+using OdeToFood.Tests.Fakes;
 
 namespace OdeToFood.Tests.Controllers
 {
@@ -16,7 +17,9 @@ namespace OdeToFood.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var db = new FakeOdeToFoodDb();
+            db.AddSet(TestData.Restaurants);
+            HomeController controller = new HomeController(db);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
