@@ -17,7 +17,8 @@ namespace OdeToFood.Tests.Features
 
         public RatingResult ComputeResult(IRatingAlgorithm algortithm, int numberOfReviews)
         {
-            return algortithm.Compute(_restaurant.Reviews.ToList());
+            var filteredReviews = _restaurant.Reviews.Take(numberOfReviews);
+            return algortithm.Compute(filteredReviews.ToList());
         }
     }
 }

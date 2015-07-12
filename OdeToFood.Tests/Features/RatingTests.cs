@@ -21,7 +21,7 @@ using System.Collections.Generic;
 namespace OdeToFood.Tests.Features
 {
     [TestClass]
-    public class RatingTest
+    public class RatingTests
     {
         [TestMethod]
         public void Computes_Result_For_One_Review()
@@ -43,6 +43,17 @@ namespace OdeToFood.Tests.Features
             var result = rater.ComputeResult(new SimpleRatingAlgorithm(), 10);
 
             Assert.AreEqual(6, result.Rating);
+        }
+
+        [TestMethod]
+        public void Rating_Includes_Only_First_N_Reviews()
+        {
+            var data = BuildRestaurantAndReviews(1,1,1,10,10,10);
+
+            var rater = new RestaurantRater(data);
+            var result = rater.ComputeResult(new SimpleRatingAlgorithm(), 3);
+
+            Assert.AreEqual(1, result.Rating);
         }
 
         [TestMethod]
