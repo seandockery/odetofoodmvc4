@@ -20,6 +20,7 @@ namespace OdeToFood.Tests.Controllers
             var db = new FakeOdeToFoodDb();
             db.AddSet(TestData.Restaurants);
             HomeController controller = new HomeController(db);
+            controller.ControllerContext = new FakeControllerContext();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
