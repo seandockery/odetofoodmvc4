@@ -8,6 +8,16 @@ namespace OdeToFood.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.UserProfile",
+                c => new
+                    {
+                        UserId = c.Int(nullable: false, identity: true),
+                        UserName = c.String(),
+                        FavoriteRestaurant = c.String(),
+                    })
+                .PrimaryKey(t => t.UserId);
+            
+            CreateTable(
                 "dbo.Restaurants",
                 c => new
                     {
@@ -24,7 +34,8 @@ namespace OdeToFood.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Rating = c.Int(nullable: false),
-                        Body = c.String(),
+                        Body = c.String(nullable: false, maxLength: 1024),
+                        ReviewerName = c.String(),
                         RestaurantId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -39,6 +50,7 @@ namespace OdeToFood.Migrations
             DropForeignKey("dbo.RestaurantReviews", "RestaurantId", "dbo.Restaurants");
             DropTable("dbo.RestaurantReviews");
             DropTable("dbo.Restaurants");
+            DropTable("dbo.UserProfile");
         }
     }
 }
