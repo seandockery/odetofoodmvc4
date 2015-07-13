@@ -22,7 +22,7 @@ namespace OdeToFood
             var migrator = new DbMigrator(new Configuration());
             migrator.Update();
 
-            if (WebSecurity.Initialized)
+            if (!WebSecurity.Initialized)
             {
                 // Connection name should match connection name used in OdeToFoodDb constructor.
                 WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
