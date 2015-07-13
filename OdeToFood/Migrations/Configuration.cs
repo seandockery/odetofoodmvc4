@@ -1,22 +1,22 @@
+using OdeToFood.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Web.Security;
+using WebMatrix.WebData;
+
 namespace OdeToFood.Migrations
 {
-    using OdeToFood.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using System.Web.Security;
-    using WebMatrix.WebData;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<OdeToFood.Models.OdeToFoodDb>
+    internal sealed class Configuration : DbMigrationsConfiguration<OdeToFoodDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(OdeToFood.Models.OdeToFoodDb context)
+        protected override void Seed(OdeToFoodDb context)
         {
             context.Restaurants.AddOrUpdate(r => r.Name,
                 new Restaurant { Name = "Sabatino's", City = "Baltimore", Country = "USA" },
@@ -38,11 +38,13 @@ namespace OdeToFood.Migrations
                     new Restaurant { Name = i.ToString(), City = "Nowhere", Country = "USA" });
             }
 
-            SeeMembership();
+            SeedMembership(context);
+            
         }
 
-        private void SeeMembership()
+        private void SeedMembership(DbContext context)
         {
+            // Connection name should match connection name used in OdeToFoodDb constructor.
             WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             var roles = (SimpleRoleProvider)Roles.Provider;
